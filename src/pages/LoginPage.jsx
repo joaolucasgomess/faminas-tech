@@ -1,51 +1,70 @@
-import React from 'react'
-import useForm from '../hooks/useForm'
-import { useNavigate } from 'react-router'
-import { login } from '../services/users'
-import { useEffect } from 'react'
-import styled from 'styled-components'
+import React, { useState } from 'react';
+import useForm from '../hooks/useForm';
+import { useNavigate } from 'react-router';
+import { login } from '../services/users';
+import { useEffect } from 'react';
+import styled from 'styled-components';
+import { RiMailLine, RiLockPasswordLine } from 'react-icons/ri';
 
 export const LoginPage = () => {
-    const [ form, onChange, clear ] = useForm({ email: '', password: '' })
-    const navigate = useNavigate()
+    const [form, onChange, clear] = useForm({ email: '', password: '' });
+    const [showEmailIcon, setShowEmailIcon] = useState(true);
+    const [showPasswordIcon, setShowPasswordIcon] = useState(true);
+    const navigate = useNavigate();
 
     useEffect(() => {
-        localStorage.removeItem('token')
-    }, [])
+        localStorage.removeItem('token');
+    }, []);
+
+    const handleEmailChange = (e) => {
+        onChange(e);
+        setShowEmailIcon(e.target.value === '');
+    };
+
+    const handlePasswordChange = (e) => {
+        onChange(e);
+        setShowPasswordIcon(e.target.value === '');
+    };
 
     const onSubmitLogin = (e) => {
-        e.preventDefault()
-        login(form, navigate)
-    }
+        e.preventDefault();
+        login(form, navigate);
+    };
 
-    return(
+    return (
         <StyledMainContainer>
             <StyledFormContainer> 
                 <h1>LOGIN</h1>
                 <StyledForm>
-                    <input 
-                        type="email" 
-                        name="email"
-                        placeholder="E-mail"
-                        onChange={onChange}
-                        required={true}
-                        value={form.email} 
-                    />
+                    <div>
+                        {showEmailIcon && <EmailIcon />}
+                        <input 
+                            type="email" 
+                            name="email"
+                            placeholder="E-mail"
+                            onChange={handleEmailChange}
+                            required={true}
+                            value={form.email} 
+                        />
+                    </div>
 
-                    <input 
-                        type="password" 
-                        name="password"
-                        placeholder="Senha"
-                        onChange={onChange}
-                        required={true}
-                        value={form.password}
-                    />
+                    <div>
+                        {showPasswordIcon && <PasswordIcon />}
+                        <input 
+                            type="password" 
+                            name="password"
+                            placeholder="Senha"
+                            onChange={handlePasswordChange}
+                            required={true}
+                            value={form.password}
+                        />
+                    </div>
                     <button type="submit" onClick={onSubmitLogin}>Entrar</button>                    
                 </StyledForm>
             </StyledFormContainer>
         </StyledMainContainer>
-    )
-}
+    );
+};
 
 export const StyledFormContainer = styled.div`
     display: flex;
@@ -79,6 +98,7 @@ export const StyledForm = styled.div`
     }
     ::placeholder{
         color: white;
+        transform: translateX(30px);
     }
     input:focus{
         outline: none;
@@ -98,3 +118,20 @@ export const StyledForm = styled.div`
 export const StyledMainContainer = styled.div`
     margin-top: 150px;
 `
+const EmailIcon = styled(RiMailLine)`
+    position: absolute;
+    left: 40px;
+    top: 50%;
+    transform: translateY(85%);
+    color: white;
+    pointer-events: none;
+`;
+
+const PasswordIcon = styled(RiLockPasswordLine)`
+    position: absolute;
+    left: 40px;
+    top: 50%;
+    transform: translateY(550%);
+    color: white;
+    pointer-events: none;
+`;
