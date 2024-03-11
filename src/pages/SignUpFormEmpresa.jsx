@@ -1,80 +1,101 @@
-import React from 'react'
-import useForm from '../hooks/useForm'
-import { useNavigate } from 'react-router'
-import styled from 'styled-components'
-
+import React from 'react';
+import useForm from '../hooks/useForm';
+import { useNavigate } from 'react-router';
+import styled from 'styled-components';
 
 export const SignUpFormEmpresa = () => {
-    const [form, onChange, clear] = useForm({ email: '', name: '', empresa: '', cargo: '', password: '' })
+    const [form, onChange, clear] = useForm({
+        email: '',
+        name: '',
+        empresa: '',
+        cargo: '',
+        password: ''
+    });
+    const navigate = useNavigate();
+
+    const handleChange = (e) => {
+        onChange(e);
+    };
+
+    const onSubmit = (e) => {
+        e.preventDefault();
+        console.log('Formulário enviado:', form);
+        // Adicione aqui a lógica para enviar o formulário para a API
+    };
 
     return (
         <StyledMainContainer>
             <StyledFormContainer>
-                <StyledForm>
-                <input
-                    type="email"
-                    placeholder="E-mail"
-                    onChange={onChange}
-                    required="true"
-                    value={form.email}
-                />
-                <input
-                    type="text"
-                    placeholder="Nome"
-                    onChange={onChange}
-                    required="true"
-                    value={form.name}
-                />
-                <input
-                    type="text"
-                    placeholder="Empresa"
-                    onChange={onChange}
-                    required="true"
-                    value={form.empresa}
-                />
-                <input
-                    type="password"
-                    placeholder="Password"
-                    onChange={onChange}
-                    required="true"
-                    value={form.password}
-                />
-                <input
-                    type="text"
-                    placeholder="Cargo"
-                    onChange={onChange}
-                    required="true"
-                    value={form.cargo}
-                />
+                <StyledForm onSubmit={onSubmit}>
+                    <input
+                        type="email"
+                        name="email"
+                        placeholder="E-mail"
+                        onChange={handleChange}
+                        value={form.email}
+                        required
+                    />
+                    <input
+                        type="text"
+                        name="name"
+                        placeholder="Nome"
+                        onChange={handleChange}
+                        value={form.name}
+                        required
+                    />
+                    <input
+                        type="text"
+                        name="empresa"
+                        placeholder="Empresa"
+                        onChange={handleChange}
+                        value={form.empresa}
+                        required
+                    />
+                    <input
+                        type="text"
+                        name="cargo"
+                        placeholder="Cargo"
+                        onChange={handleChange}
+                        value={form.cargo}
+                        required
+                    />
+                    <input
+                        type="password"
+                        name="password"
+                        placeholder="Senha"
+                        onChange={handleChange}
+                        value={form.password}
+                        required
+                    />
+                    <CustomButton type="submit">Finalizar Cadastro</CustomButton>
                 </StyledForm>
-                <CustomButton>Finalizar Cadastro</CustomButton>
             </StyledFormContainer>
         </StyledMainContainer>
-    )
-}
+    );
+};
 
-export const StyledFormContainer = styled.div`
+const StyledFormContainer = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 
-    h1{
+    h1 {
         color: white;
         font-size: 50px;
         font-weight: 600;
     }
-`
+`;
 
-export const StyledForm = styled.div`
+const StyledForm = styled.form`
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     margin-top: 40px;
 
-    input{
-        background-color: #ffffff36;    
+    input {
+        background-color: #ffffff36;
         border-radius: 50px;
         padding: 12px;
         border: solid 2px white;
@@ -83,24 +104,25 @@ export const StyledForm = styled.div`
         width: 278px;
         margin-top: 20px;
     }
-    input::placeholder{
+    input::placeholder {
         color: white;
     }
-    input:focus{
+    input:focus {
         outline: none;
     }
-`
+`;
 
-export const StyledMainContainer = styled.div`
+const StyledMainContainer = styled.div`
     margin-top: 150px;
-`
+`;
+
 const CustomButton = styled.button`
-    background-color: #1F1A50;    
+    background-color: #1f1a50;
     border-radius: 50px;
-    padding: 12px 70px 12px 70px;
+    padding: 12px 70px;
     border: solid 2px white;
     color: white;
-    margin-bottom: 10px;
+    margin-top: 20px;
 
     cursor: pointer;
     outline: none;
@@ -110,3 +132,5 @@ const CustomButton = styled.button`
         background-color: #140f33;
     }
 `;
+
+export default SignUpFormEmpresa;
