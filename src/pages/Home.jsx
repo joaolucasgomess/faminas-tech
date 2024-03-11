@@ -31,6 +31,7 @@ export const Home = () => {
                 )) 
             }
             {getToken() === 'aluno' ? <button>Adicionar Projeto</button> : <></>}   
+            
         </StyledMainContainer>
     )
 }

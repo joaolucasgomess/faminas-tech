@@ -1,23 +1,23 @@
-import { goToHomePage } from '../routes/Coordinator'
-import { users } from '../db/db'
+import { goToHomePage } from '../routes/Coordinator';
+import { users } from '../db/db';
 
 export const login = (body, navigate) => {
-    const { email, password } = body
+    const { email, password } = body;
 
-    try{
-        if(!email || !password) {
-            throw new Error('Campos inválios')
+    try {
+        if (!email || !password) {
+            throw new Error('Campos inválidos');
         }
     
-        for(const user of users){
-            if(email === user.email && password === user.password){
-                localStorage.setItem('token', `${user.role}`)
-                goToHomePage(navigate)
-            }
+        const user = users.find(user => user.email === email && user.password === password);
+        
+        if (user) {
+            localStorage.setItem('token', `${user.role}`);
+            goToHomePage(navigate);
+        } else {
+            throw new Error('Email ou senha inválidos');
         }
-
-        //throw new Error('Email ou senha inválidos')
-    }catch(err){
-        alert(err.message)
+    } catch (err) {
+        alert(err.message);
     }
-}
+};
