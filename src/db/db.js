@@ -34,22 +34,6 @@ export let projects = [
         link: "https://github.com/joaolucasgomess/faminas-tech.git",
         idAluno: 1,
         table: 2
-    },
-    {
-        id: 3,
-        name: "Projeto 2",
-        description: "Este é o Projeto 2",
-        link: "https://github.com/joaolucasgomess/faminas-tech.git",
-        idAluno: 1,
-        table: 3
-    },
-    {
-        id: 4,
-        name: "Projeto 2",
-        description: "Este é o Projeto 2",
-        link: "https://github.com/joaolucasgomess/faminas-tech.git",
-        idAluno: 1,
-        table: 4
     }
-    
+  
 ]

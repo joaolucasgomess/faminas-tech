@@ -4,12 +4,9 @@ import { useNavigate } from 'react-router';
 import { login } from '../services/users';
 import { useEffect } from 'react';
 import styled from 'styled-components';
-import { RiMailLine, RiLockPasswordLine } from 'react-icons/ri';
 
 export const LoginPage = () => {
     const [form, onChange, clear] = useForm({ email: '', password: '' });
-    const [showEmailIcon, setShowEmailIcon] = useState(true);
-    const [showPasswordIcon, setShowPasswordIcon] = useState(true);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -18,12 +15,10 @@ export const LoginPage = () => {
 
     const handleEmailChange = (e) => {
         onChange(e);
-        setShowEmailIcon(e.target.value === '');
     };
 
     const handlePasswordChange = (e) => {
         onChange(e);
-        setShowPasswordIcon(e.target.value === '');
     };
 
     const onSubmitLogin = (e) => {
@@ -37,7 +32,6 @@ export const LoginPage = () => {
                 <h1>LOGIN</h1>
                 <StyledForm>
                     <div>
-                        {showEmailIcon && <EmailIcon />}
                         <input 
                             type="email" 
                             name="email"
@@ -49,7 +43,6 @@ export const LoginPage = () => {
                     </div>
 
                     <div>
-                        {showPasswordIcon && <PasswordIcon />}
                         <input 
                             type="password" 
                             name="password"
@@ -98,7 +91,7 @@ export const StyledForm = styled.div`
     }
     ::placeholder{
         color: white;
-        transform: translateX(30px);
+        transform: translateX(10px);
     }
     input:focus{
         outline: none;
@@ -118,20 +111,4 @@ export const StyledForm = styled.div`
 export const StyledMainContainer = styled.div`
     margin-top: 150px;
 `
-const EmailIcon = styled(RiMailLine)`
-    position: absolute;
-    left: 40px;
-    top: 50%;
-    transform: translateY(85%);
-    color: white;
-    pointer-events: none;
-`;
 
-const PasswordIcon = styled(RiLockPasswordLine)`
-    position: absolute;
-    left: 40px;
-    top: 50%;
-    transform: translateY(550%);
-    color: white;
-    pointer-events: none;
-`;

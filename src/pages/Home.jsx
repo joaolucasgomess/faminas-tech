@@ -4,6 +4,7 @@ import { useProtectedPage } from '../hooks/useProtectedPage';
 import styled from 'styled-components';
 import { buttonBaseClasses, Modal, Box, Typography, Button } from '@mui/material';
 import { NavBar } from '../components/NavBar/NavBar';
+import ProfileButton from '../components/ProfileOptions/ProfileButton';
 
 export const Home = () => {
     const [openModal, setOpenModal] = useState(false);
@@ -55,7 +56,7 @@ export const Home = () => {
     };
 
     const handleAddProjectClick = () => {
-        setIsFormOpen(true); // Abrir o formulário ao clicar no botão "Adicionar Projeto"
+        setIsFormOpen(true);
     };
 
     const handleInputChange = (e) => {
@@ -68,17 +69,20 @@ export const Home = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        projects.push({ ...newProject, id: projects.length + 1 }); // Adicionar o novo projeto à lista
-        setIsFormOpen(false); // Fechar o formulário após o envio
-        setNewProject({ name: '', description: '', link: '', idAluno: 1, table: 1 }); // Limpar os campos do formulário
+        projects.push({ ...newProject, id: projects.length + 1 });
+        setIsFormOpen(false);
+        setNewProject({ name: '', description: '', link: '', idAluno: 1, table: 1 });
     };
 
     const handleBackdropClick = () => {
-        setIsFormOpen(false); // Fechar o formulário ao clicar fora dele
+        setIsFormOpen(false);
     };
 
     return (
         <StyledMainContainer>
+            <ProfileButtonWrapper>
+                <ProfileButton/>
+            </ProfileButtonWrapper>
             {projects.map((project) => (
                 <StyledProjectContainer
                     key={project.id}
@@ -175,6 +179,16 @@ export const Home = () => {
     );
 };
 
+const ProfileButtonWrapper = styled.div`
+    display: block;
+    position: fixed;
+    background-color: #1F1A50;
+    top: 0px;
+    right: 20px;
+    left: 20px;
+    width: calc(100% - 40px);
+    z-index: 999;
+`;
 const StyledProjectContainer = styled.div`
     background-color: ${({ marked }) => (marked ? '#00ad066c' : '#ffffff36')};
     display: flex;
