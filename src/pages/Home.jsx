@@ -67,7 +67,9 @@ export const Home = () => {
                     </Button>
                 </StyledModalContent>
             </Modal>
-            <NavBar />
+            <StyledFooterContainer>
+                <NavBar/>
+            </StyledFooterContainer>
 
 
 
@@ -146,5 +148,12 @@ const StyledModalContent = styled(Box)`
     padding: 16px;
     text-align: center;
     border-radius: 8px;
+`;
+const StyledFooterContainer = styled.footer`
+    position: fixed; /* Define a posição fixa */
+    bottom: 0; /* Fixa no rodapé */
+    width: 100%; /* Define a largura total */
+    background-color: #1F1A50; /* Cor de fundo da barra de navegação */
+    color: white; /* Cor do texto */
 `;
 
