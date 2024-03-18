@@ -5,20 +5,28 @@ import styled from 'styled-components';
 import { buttonBaseClasses, Modal, Box, Typography, Button } from '@mui/material';
 import { NavBar } from '../components/NavBar/NavBar';
 import ProfileButton from '../components/ProfileOptions/ProfileButton';
+import GitHubIcon from '@mui/icons-material/GitHub';
 
 export const Home = () => {
     const [openModal, setOpenModal] = useState(false);
     const [selectedProject, setSelectedProject] = useState(null);
     const [markedProjects, setMarkedProjects] = useState([]);
-    const [isFormOpen, setIsFormOpen] = useState(false); // State para controlar se o formulário está aberto
-
+    const [isFormOpen, setIsFormOpen] = useState(false);
     const [newProject, setNewProject] = useState({
         name: '',
         description: '',
         link: '',
         idAluno: 1,
-        table: 1
+        table: ''
     });
+    const [occupiedTables, setOccupiedTables] = useState([]);
+    const sortedProjects = projects.slice().sort((a, b) => a.table - b.table);
+
+    const getAvailableTables = () => {
+        const allTables = Array.from({ length: 30 }, (_, i) => i + 1);
+        const availableTables = allTables.filter(table => !occupiedTables.includes(table));
+        return availableTables;
+    };
 
     const handleOpenModal = (project) => {
         setSelectedProject(project);
@@ -70,8 +78,9 @@ export const Home = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         projects.push({ ...newProject, id: projects.length + 1 });
+        setOccupiedTables([...occupiedTables, parseInt(newProject.table)]);
         setIsFormOpen(false);
-        setNewProject({ name: '', description: '', link: '', idAluno: 1, table: 1 });
+        setNewProject({ name: '', description: '', link: '', idAluno: 1, table: '' });
     };
 
     const handleBackdropClick = () => {
@@ -80,31 +89,31 @@ export const Home = () => {
 
     return (
         <StyledMainContainer>
+            <Titulo>
+                <h1>Mesas</h1>
+            </Titulo>
+
             <ProfileButtonWrapper>
-                <ProfileButton/>
+                <ProfileButton />
             </ProfileButtonWrapper>
-            {projects.map((project) => (
+            {sortedProjects.map((project) => (
                 <StyledProjectContainer
                     key={project.id}
                     onClick={() => handleOpenModal(project)}
                     marked={markedProjects.includes(project.id)}
                 >
                     <StyledHeaderContainer>
-                        <h2>{project.name}</h2>
                         <input
                             type="checkbox"
                             name=""
                             id=""
                             onClick={(e) => handleCheckboxClick(e, project.id)}
                         />
+                        <h2>{project.table}</h2>
                     </StyledHeaderContainer>
-                    <p>{project.description}</p>
-                    <p>{project.link}</p>
-                    <StyledTableContainer>
-                        <p>Mesa {project.table}</p>
-                    </StyledTableContainer>
                 </StyledProjectContainer>
             ))}
+
             {getToken() === 'aluno' && (
                 <>
                     <StyledAddProjectButton onClick={handleAddProjectClick}>+</StyledAddProjectButton>
@@ -135,6 +144,17 @@ export const Home = () => {
                                         onChange={handleInputChange}
                                         required
                                     />
+                                    <select
+                                        name="table"
+                                        value={newProject.table}
+                                        onChange={handleInputChange}
+                                        required
+                                    >
+                                        <option value="">Selecione uma mesa</option>
+                                        {getAvailableTables().map(table => (
+                                            <option key={table} value={table}>Mesa {table}</option>
+                                        ))}
+                                    </select>
                                     <Button type="submit">Adicionar Projeto</Button>
                                 </StyledForm>
                             </StyledFormContainer>
@@ -162,6 +182,9 @@ export const Home = () => {
                         <Typography id="modal-modal-description" sx={{ mt: 2 }}>
                             {selectedProject && selectedProject.description}
                         </Typography>
+                        <a href={selectedProject && selectedProject.link} target="_blank" rel="noopener noreferrer">
+                            <GitHubIcon sx={{ fontSize: 40, color: '#000', cursor: 'pointer' }} />
+                        </a>
                         <Button
                             onClick={handleMarkAsSeen}
                             variant="contained"
@@ -179,56 +202,96 @@ export const Home = () => {
     );
 };
 
+
 const ProfileButtonWrapper = styled.div`
-    display: block;
+    display: inline-block;
     position: fixed;
     background-color: #1F1A50;
     top: 0px;
-    right: 20px;
-    left: 20px;
-    width: calc(100% - 40px);
+    right: 0px;
+    left: 0px;
     z-index: 999;
 `;
+const StyledModalContent = styled(Box)`
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 85%;
+    height: 80%;
+    max-width: 800px;
+    border: '2px solid #000';
+    padding: 16px;
+    text-align: center;
+    border-radius: 8px;
+`;
+
+const StyledMainContainer = styled.div`
+    display: flex;
+    flex-wrap: wrap; /* Permitir que os cards quebrem para a próxima linha */
+    justify-content: center;
+    gap: 10px;
+    align-items: flex-start; /* Alinhar os cards no topo */
+    margin-top: 20%;
+    margin-bottom: 130px;
+`;
+const Titulo = styled.div`
+    color: white;
+    display: flex;
+    justify-content: center;
+    width: 100%; /* Ocupar toda a largura da página */
+    margin-bottom: 10% /* Espaçamento superior */
+`;
+
 const StyledProjectContainer = styled.div`
     background-color: ${({ marked }) => (marked ? '#00ad066c' : '#ffffff36')};
     display: flex;
     flex-direction: column;
     color: white;
-    margin-top: 20px;
     border: solid 2px white;
     border-radius: 8px;
-    width: 83%;
+    width: 45%;
+    margin-right: 5px;
     height: 150px;
     padding: 5px;
-    h1,
-    p {
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
+    position: relative;
+
+    &:nth-child(2n) {
+        margin-right: 0;
     }
 
     &:hover {
         cursor: pointer;
     }
-`;
 
-const StyledMainContainer = styled.div`
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-top: 20%;
-    margin-bottom: 130px;
+    h2 {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 52px;
+        font-weight: bold;
+    }
 `;
 
 const StyledHeaderContainer = styled.div`
     display: flex;
     justify-content: space-between;
+    align-items: flex-end;
     padding: 10px;
+
+
     input {
+        align-self: flex-start;
         transform: scale(1.6);
     }
 `;
+
+
 
 const StyledTableContainer = styled.div`
     display: flex;
@@ -236,7 +299,7 @@ const StyledTableContainer = styled.div`
     margin-top: 15px;
     margin-right: 10px;
 `;
-
+//Guedes
 const StyledModalContent = styled(Box)`
     display: flex;
     flex-direction: column;
@@ -256,6 +319,7 @@ const StyledModalContent = styled(Box)`
     text-align: center;
     border-radius: 8px;
 `;
+// main
 
 const StyledModal = styled(Modal)`
     & .MuiBackdrop-root {
