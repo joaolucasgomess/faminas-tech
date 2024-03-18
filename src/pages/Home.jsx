@@ -299,7 +299,27 @@ const StyledTableContainer = styled.div`
     margin-top: 15px;
     margin-right: 10px;
 `;
-
+//Guedes
+const StyledModalContent = styled(Box)`
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 85%;
+    height: 80%;
+    max-width: 800px;
+    bgcolor: 'background.paper';
+    border: '2px solid #000';
+    boxShadow: 24;
+    padding: 16px;
+    text-align: center;
+    border-radius: 8px;
+`;
+// main
 
 const StyledModal = styled(Modal)`
     & .MuiBackdrop-root {
