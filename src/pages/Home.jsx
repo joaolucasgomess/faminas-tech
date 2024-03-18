@@ -256,15 +256,6 @@ const StyledModalContent = styled(Box)`
     text-align: center;
     border-radius: 8px;
 `;
-<<<<<<< HEAD
-const StyledFooterContainer = styled.footer`
-    position: fixed; /* Define a posição fixa */
-    bottom: 0; /* Fixa no rodapé */
-    width: 100%; /* Define a largura total */
-    background-color: #1F1A50; /* Cor de fundo da barra de navegação */
-    color: white; /* Cor do texto */
-`;
-=======
 
 const StyledModal = styled(Modal)`
     & .MuiBackdrop-root {
@@ -340,4 +331,3 @@ const StyledBackdrop = styled.div`
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 999;
 `;
->>>>>>> 49e32aabb4807782918c1383bdb572e07c390e2b

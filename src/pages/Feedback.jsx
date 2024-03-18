@@ -6,116 +6,188 @@ export const FeedBack = () => {
     return (
         <>
             <StyledMain>
-                <StyledParagraph>Lorem ipsum dolor sit amet consectetur. Aliquam etiam cursus magna sed habitant amet tempor.</StyledParagraph>
-                <StyledDivCheck>
-                    <StyledCheck type="checkbox" />
-                    <StyledCheck type="checkbox" />
-                    <StyledCheck type="checkbox" />
-                    <StyledCheck type="checkbox" />
-                    <StyledCheck type="checkbox" />
-                </StyledDivCheck>
-                <StyledParagraph>Lorem iStyledParagraphsum dolor sit amet consectetur. Est dictum StyledParagraphraesent ultrices id sollicitudin ut. Dictum congue cras consequat amet egestas blandit.</StyledParagraph>
-                <StyledInput />
-                <StyledParagraph>Lorem ipsum dolor sit amet consectetur.</StyledParagraph>
-                <StyledInput />
-                <StyledParagraph>Lorem ipsum dolor sit amet consectetur. Ullamcorper tortor consectetur nibh.</StyledParagraph>
-                <StyledInput />
-                <StyledButton>Enviar feedback</StyledButton>
+                <h1>FEEDBACK DO EVENTO</h1>
+                <p>
+                    Prezado participante,
+                    Assim como sua presença é muito importante para a realização deste evento, sua opinião é
+                    essencial ao aperfeiçoamento de nossos eventos futuros. Por isso, solicitamos o seu feedback!
+                    Agradecemos a colaboração.
+                </p>
+                <p>
+                    Dados de caracterização
+                    Categoria
+                </p>
+
+                <input type="checkbox" id="CategoriaProfissional" />
+                <label htmlFor="CategoriaProfissional">Profissional</label>
+                <input type="checkbox" id="CategoriaEstudante" />
+                <label htmlFor="CategoriaEstudante">Estudante</label>
+
+                <p>Nas questões a seguir, assinale a resposta de acordo com a escala.</p>
+
+                <div>
+                    <p>1.Temática</p>
+                    <input type="checkbox" id="otimo1" />
+                    <label htmlFor="otimo1">Ótimo</label>
+
+                    <input type="checkbox" id="bom1" />
+                    <label htmlFor="bom1">Bom</label>
+
+                    <input type="checkbox" id="regular1" />
+                    <label htmlFor="regular1">Regular</label>
+
+                    <input type="checkbox" id="naoSatisfatorio1" />
+                    <label htmlFor="naoSatisfatorio1">Não satisfatório</label>
+                </div>
+                <div>
+                    <p>2.Conteúdo</p>
+                    <input type="checkbox" id="otimo2" />
+                    <label htmlFor="otimo2">Ótimo</label>
+
+                    <input type="checkbox" id="bom2" />
+                    <label htmlFor="bom2">Bom</label>
+
+                    <input type="checkbox" id="regular2" />
+                    <label htmlFor="regular2">Regular</label>
+
+                    <input type="checkbox" id="naoSatisfatorio2" />
+                    <label htmlFor="naoSatisfatorio2">Não satisfatório</label>
+                </div>
+                <div>
+                    <p>3.Data</p>
+                    <input type="checkbox" id="otimo3" />
+                    <label htmlFor="otimo3">Ótimo</label>
+
+                    <input type="checkbox" id="bom3" />
+                    <label htmlFor="bom3">Bom</label>
+
+                    <input type="checkbox" id="regular3" />
+                    <label htmlFor="regular3">Regular</label>
+
+                    <input type="checkbox" id="naoSatisfatorio3" />
+                    <label htmlFor="naoSatisfatorio3">Não satisfatório</label>
+                </div>
+                <div>
+                    <p>4.Horário</p>
+                    <input type="checkbox" id="otimo4" />
+                    <label htmlFor="otimo4">Ótimo</label>
+
+                    <input type="checkbox" id="bom4" />
+                    <label htmlFor="bom4">Bom</label>
+
+                    <input type="checkbox" id="regular4" />
+                    <label htmlFor="regular4">Regular</label>
+
+                    <input type="checkbox" id="naoSatisfatorio4" />
+                    <label htmlFor="naoSatisfatorio4">Não satisfatório</label>
+                </div>
+                <div>
+                    <p>5.Duração</p>
+                    <input type="checkbox" id="otimo5" />
+                    <label htmlFor="otimo5">Ótimo</label>
+
+                    <input type="checkbox" id="bom5" />
+                    <label htmlFor="bom5">Bom</label>
+
+                    <input type="checkbox" id="regular5" />
+                    <label htmlFor="regular5">Regular</label>
+
+                    <input type="checkbox" id="naoSatisfatorio5" />
+                    <label htmlFor="naoSatisfatorio5">Não satisfatório</label>
+                </div>
+                <div>
+                    <p>6.Local</p>
+                    <input type="checkbox" id="otimo6" />
+                    <label htmlFor="otimo6">Ótimo</label>
+
+                    <input type="checkbox" id="bom6" />
+                    <label htmlFor="bom6">Bom</label>
+
+                    <input type="checkbox" id="regular6" />
+                    <label htmlFor="regular6">Regular</label>
+
+                    <input type="checkbox" id="naoSatisfatorio6" />
+                    <label htmlFor="naoSatisfatorio6">Não satisfatório</label>
+                </div>
+                <div>
+                    <p>7.Forma de Apresentação dos Projetos</p>
+                    <input type="checkbox" id="otimo7" />
+                    <label htmlFor="otimo7">Ótimo</label>
+
+                    <input type="checkbox" id="bom7" />
+                    <label htmlFor="bom7">Bom</label>
+
+                    <input type="checkbox" id="regular7" />
+                    <label htmlFor="regular7">Regular</label>
+
+                    <input type="checkbox" id="naoSatisfatorio7" />
+                    <label htmlFor="naoSatisfatorio7">Não satisfatório</label>
+                </div>
+                <div>
+                    <p>8.Recepção</p>
+                    <input type="checkbox" id="otimo8" />
+                    <label htmlFor="otimo8">Ótimo</label>
+
+                    <input type="checkbox" id="bom8" />
+                    <label htmlFor="bom8">Bom</label>
+
+                    <input type="checkbox" id="regular8" />
+                    <label htmlFor="regular8">Regular</label>
+
+                    <input type="checkbox" id="naoSatisfatorio8" />
+                    <label htmlFor="naoSatisfatorio8">Não satisfatório</label>
+                </div>
+                <div>
+                    <p>9.Divulgação</p>
+                    <input type="checkbox" id="otimo9" />
+                    <label htmlFor="otimo9">Ótimo</label>
+
+                    <input type="checkbox" id="bom9" />
+                    <label htmlFor="bom9">Bom</label>
+
+                    <input type="checkbox" id="regular9" />
+                    <label htmlFor="regular9">Regular</label>
+
+                    <input type="checkbox" id="naoSatisfatorio9" />
+                    <label htmlFor="naoSatisfatorio9">Não satisfatório</label>
+                </div>
+                <div>
+                    <p>10.Sua Avaliação Quanto à Organização Geral do Evento</p>
+                    <input type="checkbox" id="otimo10" />
+                    <label htmlFor="otimo10">Ótimo</label>
+
+                    <input type="checkbox" id="bom10" />
+                    <label htmlFor="bom10">Bom</label>
+
+                    <input type="checkbox" id="regular10" />
+                    <label htmlFor="regular10">Regular</label>
+
+                    <input type="checkbox" id="naoSatisfatorio10" />
+                    <label htmlFor="naoSatisfatorio10">Não satisfatório</label>
+                </div>
+                <p>Sugestões:</p>
+                <input type="text" />
+                <p>Quais os aspectos mais positivos deste encontro?</p>
+                <input type="text" />
+                <p>Quais os aspectos menos positivos deste encontro?</p>
+                <input type="text" />
             </StyledMain>
-            <StyledFooterContainer>
+            <StyledFooter>
                 <NavBar/>
-            </StyledFooterContainer>
+            </StyledFooter>
         </>    
     )
 }
 
-const StyledMain = styled.div`
-    display: flex;
-    flex-direction: column;
-    padding: 20px;
-    gap: 24px;
-    align-items: center;
-    color: #FFFFFF;
-    flex-grow: 1;
-
-    @media screen and (min-width: 768px) {
-        padding: 50px;
-    }
-
-    @media screen and (min-width: 1024px) {
-        padding: 100px;
-        font-size: 28px;
-    }
+const StyledMain = styled.main`
+    color: #F6F6F6;
 `
 
-const StyledDivCheck = styled.div`
-    display: flex;
-    gap: 10px;
+const SytledCheck = styled.input`
+    
 `
 
-const StyledCheck = styled.input`
-    width: 3em;
-    height: 3em;
-    cursor: pointer;
-    appearance: none;
-    border: 0.25em solid #FFFFFF;
-    border-radius: 50%;
-    background-color: rgba(255, 255, 255, 0.36);
-`
-
-const StyledParagraph = styled.p`
-    @media screen and (min-width: 1024px) {
-        max-width: 45%;
-    }
-`
-
-const StyledInput = styled.input`
-    color: #FFFFFF;
-    background-color: rgba(255, 255, 255, 0.36);
-    border: 2px solid #FFFFFF;
-    border-radius: 60px;
-    width: 100%;
-    padding: 10px;
-    font-size: 20px;
-
-    @media screen and (min-width: 768px) {
-        width: 50%;
-    }
-
-    @media screen and (min-width: 1024px) {
-        max-width: 50%;
-        height: 60px;
-    }
-`
-
-const StyledButton = styled.button`
-    color: #FFFFFF;
-    background-color: rgba(255, 255, 255, 0);
-    border: 2px solid #FFFFFF;
-    border-radius: 60px;
-    width: 100%;
-    padding: 10px;
-    font-size: 20px;
-
-    @media screen and (min-width: 280px) {
-        width: 50%;
-    }
-
-    @media screen and (min-width: 360px) {
-        width: 35%;
-    }
-
-    @media screen and (min-width: 768px) {
-        width: 25%;
-    }
-
-    @media screen and (min-width: 1024px) {
-        width: 12%;
-        height: 60px;
-    }
-`
-
-const StyledFooterContainer = styled.footer`
+const StyledFooter = styled.footer`
     bottom: 0;
     width: 100%;
     background-color: #1F1A50;
