@@ -212,23 +212,23 @@ const ProfileButtonWrapper = styled.div`
     left: 0px;
     z-index: 999;
 `;
-const StyledModalContent = styled(Box)`
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    background-color: white;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 85%;
-    height: 80%;
-    max-width: 800px;
-    border: '2px solid #000';
-    padding: 16px;
-    text-align: center;
-    border-radius: 8px;
-`;
+//const StyledModalContent = styled(Box)`
+   // display: flex;
+   // flex-direction: column;
+   // justify-content: space-between;
+   // background-color: white;
+   // position: absolute;
+   // top: 50%;
+   // left: 50%;
+   // transform: translate(-50%, -50%);
+   // width: 85%;
+   // height: 80%;
+   // max-width: 800px;
+   // border: '2px solid #000';
+   // padding: 16px;
+    //text-align: center;
+  //  border-radius: 8px;
+//`;
 
 const StyledMainContainer = styled.div`
     display: flex;
