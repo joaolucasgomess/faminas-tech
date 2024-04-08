@@ -77,7 +77,7 @@ const StyledMain = styled.main`
     display: flex;
     flex-direction: column;
     font-size: 1.75rem;
-    padding: 5% 10% 10% 10%;
+    padding: 5% 10% 5% 10%;
     gap: 30px;
 
     @media screen and (min-width: 280px) and (max-width: 932px) {

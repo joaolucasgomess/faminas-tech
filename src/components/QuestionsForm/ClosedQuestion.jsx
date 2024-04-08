@@ -31,14 +31,20 @@ const ClosedQuestion = ({ question }) => {
     </StyledQuestion>
   );
 };
+
 const Pergunta = styled.div`
   margin-bottom: 10px;
 `
+
 const StyledQuestion = styled.div`
   
 `
+
 const StyledOptions = styled.div`
   display: flex;
+  justify-content: center;
+  flex-direction: row; /* Por padrão, exibe as opções em linha */
+
   gap: 10px;
 
   input[type='radio'] {
@@ -55,6 +61,10 @@ const StyledOptions = styled.div`
 
   input[type='radio']:checked + label {
     background-color: #97c7ffba;
+  }
+
+  @media (max-width: 375px) {
+    flex-direction: column;
   }
 `;
 

@@ -17,11 +17,14 @@ const OpenQuestion = ({ question, onChange }) => {
 
 const StyledOpenQuestion = styled.div`
   label {
-    display: block;
+    display: flex;
     margin-bottom: 10px;
   }
 
   input[type='text'] {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: calc(100% - 20px); /* Largura quase total com espaço de 10px em cada lado */
     padding: 15px;
     border: 1px solid #ccc;
