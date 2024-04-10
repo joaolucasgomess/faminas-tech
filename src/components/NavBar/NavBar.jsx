@@ -6,6 +6,7 @@ import InfoIcon from '@mui/icons-material/Info';
 import FeedbackIcon from '@mui/icons-material/Feedback';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { goToAboutPage, goToFeedbackPage, goToHomePage } from '../../routes/Coordinator';
+import styled from 'styled-components';
 
 export function NavBar() {
   const navigate = useNavigate();
@@ -28,7 +29,8 @@ export function NavBar() {
   };
 
   return (
-    <BottomNavigation
+    <StyledBottomNavigation
+      sx={{ borderRadius: '12px', margin: '3% 3% 3% 3%'}}
       showLabels
       value={getValue(location.pathname)}
       onChange={(event, newValue) => {
@@ -38,9 +40,20 @@ export function NavBar() {
       <BottomNavigationAction label="Sobre" icon={<InfoIcon />} />
       <BottomNavigationAction label="Início" icon={<HomeIcon />} />
       <BottomNavigationAction label="Feedback" icon={<FeedbackIcon />} />
-    </BottomNavigation>
+    </StyledBottomNavigation>
   );
 }
+
+const StyledBottomNavigation = styled(BottomNavigation)`
+  && .MuiBottomNavigationAction-root.Mui-selected {
+    background-color: #0277d6dd;
+    border-radius: 10px;
+    margin: 1% 2% 1% 2%;
+    color: white;
+    padding: 6px;
+    transition: 3s;
+  }
+`;
 
 function getValue(pathname) {
   switch (pathname) {
