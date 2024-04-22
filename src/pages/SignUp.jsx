@@ -2,13 +2,13 @@ import React from 'react';
 import { goToSignUpAluno, goToSignUpEmpresa } from '../routes/Coordinator';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-
+import BackButton from '../components/Buttons/BackButton';
 
 export const SignUp = () => {
     const navigate = useNavigate();
 
     function handleClickAluno() {
-        // goToSignUpAluno(navigate);
+        goToSignUpAluno(navigate);
     }
 
     function handleClickEmpresa() {
@@ -16,13 +16,17 @@ export const SignUp = () => {
     }
 
     return (
-        <SignUpContainer>
-            <p>Selecione o seu tipo de cadastro</p>
-            <StyledButtons>
-                <CustomButton onClick={handleClickAluno}>Aluno</CustomButton>
-                <CustomButton onClick={handleClickEmpresa}>Empresa</CustomButton>
-            </StyledButtons>
-        </SignUpContainer>
+        <div>
+            <BackButton />
+            <SignUpContainer>
+                <Logo src="https://pbs.twimg.com/profile_images/1387372296533385217/viWdVTJg_400x400.jpg" alt="Logo" />
+                <h2>Selecione o seu tipo de cadastro</h2>
+                <StyledButtons>
+                    <CustomButton onClick={handleClickAluno}><h2>Estudante</h2></CustomButton>
+                    <CustomButton onClick={handleClickEmpresa}><h2>Visitante</h2></CustomButton>
+                </StyledButtons>
+            </SignUpContainer>
+        </div>
     );
 };
 
@@ -39,15 +43,18 @@ const StyledButtons = styled.div`
 `;
 
 const CustomButton = styled.button`
-    background-color: #1F1A50;
-    border-radius: 25px;
-    padding: 12px 40px;
+    background-color: #ffffff1d;
+    margin-top: 20px;
+    padding: 60px 30px 60px 30px ;
+    border-radius: 12px;
     color: white;
     cursor: pointer;
-    outline: none;
-    transition: background-color 0.3s;
+    border: solid 2px white;
 
-    &:hover {
-        background-color: #140f33;
-    }
+`;
+
+const Logo = styled.img`
+    width: auto;
+    max-height: 180px; /* Definindo a altura máxima */
+    margin-top: 40px;
 `;

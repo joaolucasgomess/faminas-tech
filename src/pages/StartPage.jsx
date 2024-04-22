@@ -1,5 +1,5 @@
 import React from 'react';
-import { goToLoginPage, goToSingUpPage } from '../routes/Coordinator';
+import { goToLoginPage, goToSignUpPage } from '../routes/Coordinator';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 // import logoFaminas from '../assets/logoFaminas_400x400.jpg'
@@ -12,7 +12,7 @@ export const StartPage = () => {
     }
 
     function handleClickSignUp() {
-        goToSingUpPage(navigate);
+        goToSignUpPage(navigate);
     }
 
     return (

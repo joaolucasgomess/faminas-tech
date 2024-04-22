@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router';
 import { login } from '../services/users';
 import { useEffect } from 'react';
 import styled from 'styled-components';
+import BackButton from '../components/Buttons/BackButton';
 
 export const LoginPage = () => {
     const [form, onChange, clear] = useForm({ email: '', password: '' });
@@ -27,6 +28,8 @@ export const LoginPage = () => {
     };
 
     return (
+        <div>
+            <BackButton/>
         <StyledMainContainer>
             <StyledFormContainer> 
                 <h1>LOGIN</h1>
@@ -56,6 +59,7 @@ export const LoginPage = () => {
                 </StyledForm>
             </StyledFormContainer>
         </StyledMainContainer>
+        </div>
     );
 };
 
@@ -109,6 +113,8 @@ export const StyledForm = styled.div`
 `
 
 export const StyledMainContainer = styled.div`
-    margin-top: 150px;
+    margin-top: 20%;
+    position: relative;
 `
+
 

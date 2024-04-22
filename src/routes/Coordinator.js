@@ -2,14 +2,14 @@ export const goToStartPage = (navigate) => {
     navigate('/')
 }
 
-export const goToSingUpPage = navigate => {
-    navigate('/singup')
+export const goToSignUpPage = navigate => {
+    navigate('/signup')
 }
-export const goToSingUpAluno = navigate => {
-    navigate('/singup/aluno')
+export const goToSignUpAluno = navigate => {
+    navigate('/signup/aluno')
 }
-export const goToSingUpEmpresa = navigate => {
-    navigate('/singup/empresa')
+export const goToSignUpEmpresa = navigate => {
+    navigate('/signup/empresa')
 }
   
 export const goToLoginPage = (navigate) => {
@@ -19,6 +19,7 @@ export const goToLoginPage = (navigate) => {
 export const goToHomePage = (navigate) => {
     navigate('/home')
 }
+
   
 export const goToFeedbackPage = (navigate) => {
     navigate('/feedback')
