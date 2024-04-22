@@ -59,3 +59,37 @@ export const singupCompany = (body, navigate) =>{
     }
 
 }
+export const singupStudent = (body, navigate) =>{
+    try{
+        const { 
+            email,
+            name,
+            matricula,
+            password
+         } = body
+
+         if(!email || !name || !password || !matricula){
+            throw new Error('Campos inválidos.')
+         }
+
+         const user = users.find(user => user.email === email)
+
+         if(user){
+            throw new Error('Usuario ja existe')
+         }
+         users.push({
+            email: email,
+            name: name,
+            password: password,
+            matricula: matricula,
+            role: "aluno"
+
+         })
+         localStorage.setItem('token', `aluno`)
+         goToLoginPage(navigate)
+
+    }catch(err){
+        alert(err.message)
+    }
+
+}

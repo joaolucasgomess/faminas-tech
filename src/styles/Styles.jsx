@@ -1,4 +1,6 @@
 import { createGlobalStyle } from 'styled-components'
+import {colors} from '../constants/colors'
+
 
 const GlobalStyle = createGlobalStyle`
     *{
@@ -9,7 +11,7 @@ const GlobalStyle = createGlobalStyle`
         font-weight: 400;
     }
     :root{
-        background-color: #1F1A50;
+        background-color: ${colors.white};
     }
 `
 

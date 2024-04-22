@@ -13,6 +13,7 @@ export let users = [
         email: "aluno@teste.com",
         name: "Aluno 1",
         password: "testeAluno",
+        matricula: "1-22-10000",
         role: "aluno"
     }
 ]

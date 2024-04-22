@@ -6,6 +6,9 @@ import { buttonBaseClasses, Modal, Box, Typography, Button } from '@mui/material
 import { NavBar } from '../components/NavBar/NavBar';
 import ProfileButton from '../components/ProfileOptions/ProfileButton';
 import GitHubIcon from '@mui/icons-material/GitHub';
+import ProjectCard from '../components/Projects/ProjectCard';
+import { colors } from '../constants/colors';
+import LogoFaminas from '../assets/logo faminas.png'
 
 export const Home = () => {
     const [openModal, setOpenModal] = useState(false);
@@ -93,25 +96,18 @@ export const Home = () => {
                 <h1>Mesas</h1>
             </Titulo>
 
-            <ProfileButtonWrapper>
+            <HeaderWrapper>
                 <ProfileButton />
-            </ProfileButtonWrapper>
+            </HeaderWrapper>
+
             {sortedProjects.map((project) => (
-                <StyledProjectContainer
-                    key={project.id}
-                    onClick={() => handleOpenModal(project)}
-                    marked={markedProjects.includes(project.id)}
-                >
-                    <StyledHeaderContainer>
-                        <input
-                            type="checkbox"
-                            name=""
-                            id=""
-                            onClick={(e) => handleCheckboxClick(e, project.id)}
-                        />
-                        <h2>{project.table}</h2>
-                    </StyledHeaderContainer>
-                </StyledProjectContainer>
+                <ProjectCard
+                key={project.id}
+                project={project}
+                marked={markedProjects.includes(project.id)}
+                handleCheckboxClick={handleCheckboxClick}
+                handleOpenModal={handleOpenModal}
+            />
             ))}
 
             {getToken() === 'aluno' && (
@@ -195,21 +191,20 @@ export const Home = () => {
                     </StyledModalContent>
                 </StyledModal>
             </Modal>
-            <StyledFooterContainer>
-                <NavBar />
-            </StyledFooterContainer>
+            <NavBar />
         </StyledMainContainer>
     );
 };
 
 
-const ProfileButtonWrapper = styled.div`
-    display: inline-block;
+const HeaderWrapper = styled.div`
+    display: flex;
     position: fixed;
-    background-color: #1F1A50;
+    justify-content: end;
+    width: 100%;
+    background-color: ${colors.blueLogo};
+    border-radius: 0 0 15px 15px;
     top: 0px;
-    right: 0px;
-    left: 0px;
     z-index: 999;
 `;
 const StyledModalContent = styled(Box)`
@@ -232,10 +227,10 @@ const StyledModalContent = styled(Box)`
 
 const StyledMainContainer = styled.div`
     display: flex;
-    flex-wrap: wrap; /* Permitir que os cards quebrem para a próxima linha */
+    flex-wrap: wrap;
     justify-content: center;
     gap: 10px;
-    align-items: flex-start; /* Alinhar os cards no topo */
+    align-items: flex-start;
     margin-top: 20%;
     margin-bottom: 130px;
 `;
@@ -247,80 +242,6 @@ const Titulo = styled.div`
     margin-bottom: 10% /* Espaçamento superior */
 `;
 
-const StyledProjectContainer = styled.div`
-    background-color: ${({ marked }) => (marked ? '#00ad066c' : '#ffffff36')};
-    display: flex;
-    flex-direction: column;
-    color: white;
-    border: solid 2px white;
-    border-radius: 8px;
-    width: 45%;
-    margin-right: 5px;
-    height: 150px;
-    padding: 5px;
-    position: relative;
-
-    &:nth-child(2n) {
-        margin-right: 0;
-    }
-
-    &:hover {
-        cursor: pointer;
-    }
-
-    h2 {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        font-size: 52px;
-        font-weight: bold;
-    }
-`;
-
-const StyledHeaderContainer = styled.div`
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    padding: 10px;
-
-
-    input {
-        align-self: flex-start;
-        transform: scale(1.6);
-    }
-`;
-
-
-
-const StyledTableContainer = styled.div`
-    display: flex;
-    justify-content: flex-end;
-    margin-top: 15px;
-    margin-right: 10px;
-`;
-//Guedes
-const StyledModalContent = styled(Box)`
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    background-color: white;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 85%;
-    height: 80%;
-    max-width: 800px;
-    bgcolor: 'background.paper';
-    border: '2px solid #000';
-    boxShadow: 24;
-    padding: 16px;
-    text-align: center;
-    border-radius: 8px;
-`;
-// main
-
 const StyledModal = styled(Modal)`
     & .MuiBackdrop-root {
         background-color: rgba(0, 0, 0, 0.5);
@@ -328,19 +249,13 @@ const StyledModal = styled(Modal)`
     }
 `;
 
-const StyledFooterContainer = styled.footer`
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    background-color: #1f1a50;
-    color: white;
-`;
+
 
 const StyledAddProjectButton = styled.button`
     position: fixed;
-    bottom: 70px;
-    right: 20px;
-    background-color: #0277d6dd;
+    right: 3%;
+    bottom: 13.5%;
+    background-color: ${colors.lightBlue};
     color: white;
     border: none;
     border-radius: 10px;

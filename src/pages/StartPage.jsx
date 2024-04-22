@@ -2,7 +2,10 @@ import React from 'react';
 import { goToLoginPage, goToSignUpPage } from '../routes/Coordinator';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-// import logoFaminas from '../assets/logoFaminas_400x400.jpg'
+import {colors} from '../constants/colors'
+import LogoFaminas from '../assets/logo-faminas-white2.png'
+
+
 
 export const StartPage = () => {
     const navigate = useNavigate();
@@ -17,7 +20,7 @@ export const StartPage = () => {
 
     return (
         <StartPageContainer>
-            <Logo src="https://pbs.twimg.com/profile_images/1387372296533385217/viWdVTJg_400x400.jpg" alt="Logo" />
+            <Logo src={LogoFaminas} alt="Logo" />
             <StyledButtons>
                 <CustomButton onClick={handleClickLogin}>Login</CustomButton>
                 <CustomButton onClick={handleClickSignUp}>Cadastre-se</CustomButton>
@@ -31,24 +34,36 @@ export const StartPageContainer = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
-    h1{
-        color: white;
-    }
 `
 
 export const StyledButtons = styled.div`
     display: flex;
     flex-direction: column;
-`
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+
+    button {
+        width: 150px; /* Defina o tamanho desejado para os botões */
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+
+        padding: 12% 80% 12% 80%;
+    }
+`;
+
 
 const CustomButton = styled.button`
-    background-color: #1F1A50;    
-    border-radius: 50px;
-    padding: 12px 70px 12px 70px;
-    border: solid 2px white;
-    color: white;
-    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: ${colors.midBlue};    
+    border-radius: 100px;
+    border: none;
+    color: ${colors.white};
+    font-weight: bold;
+    font-size: 18px;
 
     cursor: pointer;
     outline: none;
@@ -60,8 +75,8 @@ const CustomButton = styled.button`
 `;
 
 const Logo = styled.img`
-    width: 300px;
-    height: auto;
-    margin-bottom: 50px;
-    margin-top: 40px;
+    max-width: 90%;
+    max-height: 100%;
+    margin-top: 40%;
+    margin-bottom: 30%;
 `;

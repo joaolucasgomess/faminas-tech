@@ -29,9 +29,9 @@ export const About = () => {
                     <p>Esperamos que você aproveite o nosso aplicativo e tenha uma experiência enriquecedora durante o evento. Obrigado por nos acompanhar!</p>
                 </StyledExplanation>
             </StyledMain>
-            <StyledFooterContainer>
-                <NavBar />
-            </StyledFooterContainer>
+
+            <NavBar />
+
         </>
     )
 }
@@ -63,14 +63,6 @@ const StyledExplanation = styled.div`
     p {
         margin-bottom: 1rem;
     }
-`;
-
-const StyledFooterContainer = styled.footer`
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    background-color: #1F1A50;
-    color: white;
 `;
 
 export default About;

@@ -6,7 +6,7 @@ function App() {
   return (
     <>
         <GlobalStyle/>
-        <BrowserRouter basename="/faminas-tech">
+        <BrowserRouter basename="/">
           <Router/>
         </BrowserRouter>
     </>
