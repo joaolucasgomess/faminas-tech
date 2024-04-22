@@ -2,10 +2,13 @@ import React from 'react'
 import useForm from '../hooks/useForm'
 import { useNavigate } from 'react-router'
 import styled from 'styled-components'
-import { singupStudent } from '../services/users' // Importe a função de cadastro de estudante do seu serviço
+import { singupStudent } from '../services/users'
+import BackButton from '../components/Buttons/BackButton'
+import { colors } from '../constants/colors'
+import LogoFaminas from '../assets/logo-faminas-white2.png'
 
 export const SignUpFormEstudante = () => {
-    const [form, onChange, clear] = useForm({ email: '', name: '', password: '', enrollment: '' }) // Campos de formulário
+    const [form, onChange, clear] = useForm({ email: '', name: '', password: '', matricula: '' }) // Campos de formulário
     const navigate = useNavigate()
 
     const onSubmitSignup = (e) => {
@@ -15,6 +18,10 @@ export const SignUpFormEstudante = () => {
 
     return (
         <StyledMainContainer>
+            <ContainerBackButton>
+            <BackButton/>
+            </ContainerBackButton>
+                <Logo src={LogoFaminas} alt="Logo" />
             <StyledFormContainer>
                 <StyledForm>
                     <input
@@ -43,7 +50,7 @@ export const SignUpFormEstudante = () => {
                     />
                     <input
                         type="text"
-                        name="enrollment"
+                        name="matricula"
                         placeholder="Matrícula"
                         onChange={onChange}
                         required
@@ -62,50 +69,62 @@ export const StyledFormContainer = styled.div`
     justify-content: center;
     align-items: center;
 `
-
+const ContainerBackButton = styled.div`
+    position: absolute;
+    top: 5%;
+    left: 5%;
+`
 export const StyledForm = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin-top: 40px;
+    color: ${colors.midBlue};
+    font-size: 15px;
+    gap: 1rem;
 
     input {
-        background-color: #ffffff36;    
+        background-color: ${colors.transparent};
         border-radius: 50px;
         padding: 12px;
-        border: solid 2px white;
-        color: white;
+        border: solid 3px ${colors.midBlue};
+        color: ${colors.midBlue};
+        font-size: 15px;
         height: 55px;
         width: 278px;
-        margin-top: 20px;
+        text-indent: 5%;
     }
 
-    input::placeholder {
-        color: white;
+    ::placeholder {
+        color: ${colors.midBlue};
     }
 
     input:focus {
-        outline: none;
+        outline: solid 2px ${colors.lightBlue};
+        border: solid 3px ${colors.midBlue};
     }
 `
 
 export const StyledMainContainer = styled.div`
-    margin-top: 150px;
+ margin-top: 40%;
 `
+const Logo = styled.img`
+    position: absolute;
+    top: 4%;
+    left:25%;
+    max-width: 50%;
+    max-height: 100%;
+`;
 
 const CustomButton = styled.button`
-    background-color: #1F1A50;    
-    border-radius: 50px;
-    padding: 12px 70px;
-    border: solid 2px white;
-    color: white;
-    margin-top: 20px;
-    cursor: pointer;
-    outline: none;
-    transition: background-color 0.3s;
-
-    &:hover {
-        background-color: #140f33;
-    }
+    background-color: ${colors.midBlue};
+        border-radius: 50px;
+        padding: 12px;
+        border: solid 2px white;
+        color: ${colors.white};
+        height: 55px;
+        width: 212px;
+        font-size: 15px;
+        font-weight: bold;
+        margin-top: 10% ;
 `;

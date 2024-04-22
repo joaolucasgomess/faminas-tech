@@ -3,6 +3,8 @@ import { goToSignUpAluno, goToSignUpEmpresa } from '../routes/Coordinator';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import BackButton from '../components/Buttons/BackButton';
+import LogoFaminas from '../assets/logo-faminas-white2.png'
+import { colors } from '../constants/colors';
 
 export const SignUp = () => {
     const navigate = useNavigate();
@@ -17,13 +19,15 @@ export const SignUp = () => {
 
     return (
         <div>
-            <BackButton />
+            <ContainerBackButton>
+                <BackButton />
+            </ContainerBackButton>
             <SignUpContainer>
-                <Logo src="https://pbs.twimg.com/profile_images/1387372296533385217/viWdVTJg_400x400.jpg" alt="Logo" />
-                <h2>Selecione o seu tipo de cadastro</h2>
+                <Logo src={LogoFaminas} alt="Logo" />
+                <h2>Como deseja se cadastrar?</h2>
                 <StyledButtons>
-                    <CustomButton onClick={handleClickAluno}><h2>Estudante</h2></CustomButton>
-                    <CustomButton onClick={handleClickEmpresa}><h2>Visitante</h2></CustomButton>
+                    <CustomButton onClick={handleClickAluno}>Estudante</CustomButton>
+                    <CustomButton onClick={handleClickEmpresa}>Visitante</CustomButton>
                 </StyledButtons>
             </SignUpContainer>
         </div>
@@ -34,27 +38,61 @@ const SignUpContainer = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     color: white;
+    gap: 30px;
+    
+    h2{
+        color: ${colors.midBlue};
+        max-width: 80%;
+        font-size: 120%;
+    }
 `;
 
 const StyledButtons = styled.div`
     display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     gap: 20px;
+    button {
+        width: 10rem; /* Defina o tamanho desejado para os botões */
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        padding: 12% 80% 12% 80%;
+        font-size: 100%;
+        font-weight: bold;
+    }
 `;
 
-const CustomButton = styled.button`
-    background-color: #ffffff1d;
-    margin-top: 20px;
-    padding: 60px 30px 60px 30px ;
-    border-radius: 12px;
-    color: white;
-    cursor: pointer;
-    border: solid 2px white;
+const ContainerBackButton = styled.div`
+    position: absolute;
+    top: 5%;
+    left: 5%;
+`
 
+const CustomButton = styled.button`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: ${colors.midBlue};    
+    border-radius: 100px;
+    border: solid 2px white;
+    color: white;
+
+    cursor: pointer;
+    outline: none;
+    transition: background-color 0.3s;
+
+    &:hover {
+        background-color: #140f33;
+    }
 `;
 
 const Logo = styled.img`
-    width: auto;
-    max-height: 180px; /* Definindo a altura máxima */
-    margin-top: 40px;
+    max-width: 90%;
+    max-height: 100%;
+    margin-top: 40%;
+    margin-bottom: 30%;
 `;

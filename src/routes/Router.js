@@ -7,13 +7,14 @@ import { Home } from '../pages/Home'
 import { FeedBack } from '../pages/Feedback'
 import { About } from '../pages/About'
 import { SignUpFormEmpresa }from '../pages/SignUpFormEmpresa'
+import { SignUpFormEstudante} from '../pages/SignUpFormEstudante'
 import { Page404 } from '../pages/Page404' 
 
  const Router = () => (
     <Routes>
         <Route path="/" element={<StartPage/>}/>
         <Route path="/SignUp" element={<SignUp/>}/>
-        {/* <Route path="/Signup/aluno" element={<SignUpFormAluno/>}/> */}
+        <Route path="/Signup/aluno" element={<SignUpFormEstudante/>}/>
         <Route path="/SignUp/empresa" element={<SignUpFormEmpresa/>}/>
         <Route path="/login" element={<LoginPage/>}/>
         <Route path="/home" element={<Home/>}/>
