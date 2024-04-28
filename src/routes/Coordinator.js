@@ -2,6 +2,11 @@ export const goToStartPage = (navigate) => {
     navigate('/')
 }
 
+export const goToHomeTestPage = (navigate) => {
+    navigate('/homeTest')
+}
+
+
 export const goToSingUpPage = navigate => {
     navigate('/singup')
 }

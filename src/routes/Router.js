@@ -7,7 +7,8 @@ import { Home } from '../pages/Home'
 import { FeedBack } from '../pages/Feedback'
 import { About } from '../pages/About'
 import { SignUpFormEmpresa }from '../pages/SignUpFormEmpresa'
-import { Page404 } from '../pages/Page404' 
+import { Page404 } from '../pages/Page404'
+import { HomeTest } from '../pages/HomeTest'
 
  const Router = () => (
     <Routes>
@@ -20,6 +21,7 @@ import { Page404 } from '../pages/Page404'
         <Route path="/feedback" element={<FeedBack/>}/>
         <Route path="/about" element={<About/>}/>
         <Route path="*" element={<Page404/>}/>
+        <Route path="/homeTest" element={<HomeTest/>}/>
     </Routes>
  )
 
